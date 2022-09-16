@@ -11,7 +11,9 @@ describe('Common render', () => {
       <HTSReactForm
         actionControl={{
           label: 'Login',
-          onSubmit: () => {},
+          onSubmit: () => {
+            console.log('On submit method.')
+          },
         }}
         controls={[
           {
@@ -20,7 +22,9 @@ describe('Common render', () => {
             name: 'email',
             placeholder: '',
             value: '',
-            onChange: () => {},
+            onChange: () => {
+              console.log('On change method.')
+            },
           },
         ]}
       />,

@@ -1,3 +1,3 @@
-import HTSReactForm from "./components/Form"
+import HTSReactForm from './components/Form'
 
-export {HTSReactForm}
+export { HTSReactForm }
