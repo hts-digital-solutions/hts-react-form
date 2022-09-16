@@ -1,6 +1,6 @@
 {
   "name": "hts-react-form",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple and easy form for your react project.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -19,7 +19,12 @@
     "type": "git",
     "url": "git+https://github.com/hts-digital-solutions/hts-react-form.git"
   },
-  "keywords": ["react", "react-form", "react-simple-form", "hts-react-form"],
+  "keywords": [
+    "react",
+    "react-form",
+    "react-simple-form",
+    "hts-react-form"
+  ],
   "author": "HTS Digital Solutions",
   "license": "MIT",
   "devDependencies": {
