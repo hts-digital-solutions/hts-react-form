@@ -19,13 +19,16 @@
     "type": "git",
     "url": "git+https://github.com/hts-digital-solutions/hts-react-form.git"
   },
+  "bugs": {
+    "url": "http://github.com/hts-digital-solutions/hts-react-form/issues"
+  },
   "keywords": [
     "react",
     "react-form",
     "react-simple-form",
     "hts-react-form"
   ],
-  "author": "HTS Digital Solutions",
+  "author": "HTS Digital Solutions <htsdigitalsolutions@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
