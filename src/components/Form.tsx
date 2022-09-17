@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FormEvent } from 'react'
 
 type Control = {
   label: string | JSX.Element
@@ -7,7 +7,7 @@ type Control = {
   placeholder?: string
   value: any
   onChange: any
-  styles?: React.CSSProperties
+  styles?: React.CSSProperties | {}
   className?: string
   required?: boolean
   options?: {
@@ -21,14 +21,14 @@ interface FormProps {
   actionControl: {
     label: string | JSX.Element
     onSubmit: any
-    styles?: React.CSSProperties
+    styles?: React.CSSProperties | {}
     className?: string
   }
   forgetPassword?:
     | {
         label: string | JSX.Element
         onClick: any
-        styles?: React.CSSProperties
+        styles?: React.CSSProperties | {}
         className?: string
       }
     | false
@@ -36,7 +36,7 @@ interface FormProps {
     | {
         label: string | JSX.Element
         onClick: any
-        styles: React.CSSProperties
+        styles: React.CSSProperties | {}
         className: string
       }
     | false
@@ -44,7 +44,7 @@ interface FormProps {
     | {
         label: string | JSX.Element
         onClick: any
-        styles: React.CSSProperties
+        styles: React.CSSProperties | {}
         className: string
       }
     | false
@@ -52,14 +52,16 @@ interface FormProps {
     | {
         label: string | JSX.Element
         onClick: any
-        styles: React.CSSProperties
+        styles: React.CSSProperties | {}
         className: string
       }
     | false
   labelClassName?: string
-  labelStyles?: React.CSSProperties
-  styles?: React.CSSProperties
+  labelStyles?: React.CSSProperties | {}
+  styles?: React.CSSProperties | {}
   className?: string
+  errorClassName?: string
+  errorStyles?: React.CSSProperties | {}
 }
 
 function Form({
@@ -73,20 +75,42 @@ function Form({
   labelStyles = {},
   styles = {},
   className = '',
+  errorClassName = '',
+  errorStyles = {},
 }: FormProps): JSX.Element {
+  const [error, setError] = React.useState('')
+
+  const onChangeHandler = (e: any, control: Control) => {
+    e.preventDefault()
+    if (control.required && !e.target.value?.trim()) {
+      setError(`${control.label} is required.`)
+    } else {
+      setError('')
+    }
+
+    control.onChange(e)
+  }
+
   const renderControl = (control: Control, index: number) => {
     const labelTag = (
       <label style={labelStyles} className={`${labelClassName ? labelClassName : 'htsform__label'}`}>
         {control.label}
       </label>
     )
+
+    const errorTag = (
+      <p style={errorStyles} className={`${errorClassName ? errorClassName : 'htsform__error'}`}>
+        {error}
+      </p>
+    )
+
     const InputTag = (
       <input
         type={control.type}
         name={control.name}
         placeholder={control?.placeholder}
         value={control?.value}
-        onChange={control?.onChange}
+        onChange={(e) => onChangeHandler(e, control)}
         className={`${control.className ? control.className : 'htsform__control'}`}
         style={control.styles}
         required={control.required || false}
@@ -97,7 +121,7 @@ function Form({
       <select
         name={control.name}
         value={control?.value}
-        onChange={control?.onChange}
+        onChange={(e) => onChangeHandler(e, control)}
         className={`${control.className ? control.className : 'htsform__control'}`}
         style={control.styles}
         required={control.required || false}
@@ -115,7 +139,7 @@ function Form({
         name={control.name}
         placeholder={control?.placeholder}
         value={control?.value}
-        onChange={control?.onChange}
+        onChange={(e) => onChangeHandler(e, control)}
         className={`${control.className ? control.className : 'htsform__control'}`}
         style={control.styles}
         required={control.required || false}
@@ -128,6 +152,7 @@ function Form({
           <div className={'htsform__control__group'} key={index}>
             {labelTag}
             {InputTag}
+            {errorTag}
           </div>
         )
       case 'select':
@@ -135,6 +160,7 @@ function Form({
           <div className={'htsform__control__group'} key={index}>
             {labelTag}
             {SelectTag}
+            {errorTag}
           </div>
         )
       case 'textarea':
@@ -142,6 +168,7 @@ function Form({
           <div className={'htsform__control__group'} key={index}>
             {labelTag}
             {TextareaTag}
+            {errorTag}
           </div>
         )
       default:
@@ -149,6 +176,7 @@ function Form({
           <div className={'htsform__control__group'} key={index}>
             {labelTag}
             {InputTag}
+            {errorTag}
           </div>
         )
     }
@@ -183,7 +211,12 @@ function Form({
               </button>
             )}
           </div>
-          <button>{actionControl.label}</button>
+          <button
+            style={actionControl?.styles}
+            className={`${actionControl.className ? actionControl.className : 'htsform__action__btn'}`}
+          >
+            {actionControl.label}
+          </button>
         </div>
       )}
 

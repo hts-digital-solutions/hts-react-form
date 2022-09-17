@@ -37,7 +37,7 @@
   font-size: 1.2rem;
   width: 3rem;
   height: 3rem;
-  background-color: var(--white);
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,8 +59,23 @@
 }
 
 .htsform__forgot:hover {
-  color: var(--secondary-color);
+  color: orange;
   background-color: transparent;
+}
+
+.htsform__action__btn {
+  padding: 1rem 2rem;
+  background-color: #fff;
+  color: #000;
+}
+
+.htsform__action__btn:hover {
+  opacity: 0.8;
+}
+
+.htsform__error {
+  font-size: 0.9rem;
+  color: rgb(221, 38, 38);
 }
 
 @media screen and (max-width: 768px) {
@@ -76,5 +91,8 @@
 @media screen and (max-width: 480px) {
   .htsform__container {
     margin: 0 0.5rem;
+  }
+  .htsform__action__btn {
+    padding: 0.8rem 1.2rem;
   }
 }
