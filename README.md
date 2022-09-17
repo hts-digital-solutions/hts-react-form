@@ -6,13 +6,40 @@
 npm i hts-react-form
 </code>
 <br/>
+<br/>
 <code>
 yarn add hts-react-form
 </code>
 
 <h2>Usages<h2>
 
-<table>
+<code>
+import {HTSReactForm} from "hts-react-form"
+
+<HTSReactForm
+actionControl={{
+    label: "Login",
+    onSubmit: (e) => {
+        setState(e.target.value)
+    },
+}}
+controls={[
+{
+label: 'Email',
+type: 'text',
+name: 'email',
+placeholder: '',
+value: '',
+onChange: (e) => {
+e.preventDefault()
+//rest code
+},
+},
+]}
+/>
+</code>
+
+<table style="font-size:1rem;">
 <thead>
 <tr>
 <th>Attributes Name</th>

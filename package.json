@@ -53,6 +53,7 @@
   },
   "files": [
     "dist",
+    "styles",
     "LICENSE",
     "README.md"
   ]

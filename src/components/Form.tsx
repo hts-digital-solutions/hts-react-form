@@ -1,12 +1,11 @@
 import React from 'react'
-
-import css from '../styles/Form.module.css'
+import '../../styles/style.css'
 
 type Control = {
-  label: string
+  label: string | JSX.Element
   name: string
   type: string
-  placeholder: string
+  placeholder?: string
   value: any
   onChange: any
   styles?: React.CSSProperties
@@ -21,14 +20,14 @@ type Control = {
 interface FormProps {
   controls: Control[]
   actionControl: {
-    label: string
+    label: string | JSX.Element
     onSubmit: any
     styles?: React.CSSProperties
     className?: string
   }
   forgetPassword?:
     | {
-        label: string
+        label: string | JSX.Element
         onClick: any
         styles?: React.CSSProperties
         className?: string
@@ -36,7 +35,7 @@ interface FormProps {
     | false
   googleLogin?:
     | {
-        label: string
+        label: string | JSX.Element
         onClick: any
         styles: React.CSSProperties
         className: string
@@ -44,7 +43,7 @@ interface FormProps {
     | false
   githubLogin?:
     | {
-        label: string
+        label: string | JSX.Element
         onClick: any
         styles: React.CSSProperties
         className: string
@@ -52,7 +51,7 @@ interface FormProps {
     | false
   facebookLogin?:
     | {
-        label: string
+        label: string | JSX.Element
         onClick: any
         styles: React.CSSProperties
         className: string
@@ -76,9 +75,9 @@ function Form({
   styles = {},
   className = '',
 }: FormProps): JSX.Element {
-  const renderControl = (control: Control) => {
+  const renderControl = (control: Control, index: number) => {
     const labelTag = (
-      <label style={labelStyles} className={`${labelClassName ? labelClassName : css.form__label}`}>
+      <label style={labelStyles} className={`${labelClassName ? labelClassName : 'form__label'}`}>
         {control.label}
       </label>
     )
@@ -89,7 +88,7 @@ function Form({
         placeholder={control?.placeholder}
         value={control?.value}
         onChange={control?.onChange}
-        className={`${control.className ? control.className : css.form__control}`}
+        className={`${control.className ? control.className : 'form__control'}`}
         style={control.styles}
         required={control.required || false}
       />
@@ -100,7 +99,7 @@ function Form({
         name={control.name}
         value={control?.value}
         onChange={control?.onChange}
-        className={`${control.className ? control.className : css.form__control}`}
+        className={`${control.className ? control.className : 'form__control'}`}
         style={control.styles}
         required={control.required || false}
       >
@@ -118,7 +117,7 @@ function Form({
         placeholder={control?.placeholder}
         value={control?.value}
         onChange={control?.onChange}
-        className={`${control.className ? control.className : css.form__control}`}
+        className={`${control.className ? control.className : 'form__control'}`}
         style={control.styles}
         required={control.required || false}
       ></textarea>
@@ -127,28 +126,28 @@ function Form({
     switch (control.type) {
       case 'text':
         return (
-          <div className={css.form__control__group}>
+          <div className={'form__control__group'} key={index}>
             {labelTag}
             {InputTag}
           </div>
         )
       case 'select':
         return (
-          <div className={css.form__control__group}>
+          <div className={'form__control__group'} key={index}>
             {labelTag}
             {SelectTag}
           </div>
         )
       case 'textarea':
         return (
-          <div className={css.form__control__group}>
+          <div className={'form__control__group'} key={index}>
             {labelTag}
             {TextareaTag}
           </div>
         )
       default:
         return (
-          <div className={css.form__control__group}>
+          <div className={'form__control__group'} key={index}>
             {labelTag}
             {InputTag}
           </div>
@@ -159,14 +158,14 @@ function Form({
     <form
       key='hts-react-form'
       onSubmit={actionControl?.onSubmit}
-      className={`${className ? className : css.form__container}`}
+      className={`${className ? className : 'form__container'}`}
       style={styles}
     >
-      {controls?.map((control) => renderControl(control))}
+      {controls?.map((control, index) => renderControl(control, index))}
 
       {actionControl && (
-        <div className={css.form__control__button}>
-          <div className={css.form__social}>
+        <div className={'form__control__button'}>
+          <div className={'form__social'}>
             {googleLogin && (
               <button onClick={googleLogin?.onClick} type='button'>
                 {googleLogin?.label}
@@ -190,7 +189,7 @@ function Form({
       )}
 
       {forgetPassword && (
-        <button className={css.form__forgot} type='button' onClick={forgetPassword?.onClick}>
+        <button className={'form__forgot'} type='button' onClick={forgetPassword?.onClick}>
           {forgetPassword?.label}
         </button>
       )}
