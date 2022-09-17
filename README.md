@@ -13,9 +13,10 @@ yarn add hts-react-form
 
 <h2>Usages<h2>
 
-<code>
+<code style="font-size:1rem;">
+import 'hts-react-form/dist/styles/default.css' //default css 
 import {HTSReactForm} from "hts-react-form"
-
+<br/>
 <HTSReactForm
 actionControl={{
     label: "Login",

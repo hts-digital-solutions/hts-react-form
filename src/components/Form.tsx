@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../styles/style.css'
 
 type Control = {
   label: string | JSX.Element
@@ -77,7 +76,7 @@ function Form({
 }: FormProps): JSX.Element {
   const renderControl = (control: Control, index: number) => {
     const labelTag = (
-      <label style={labelStyles} className={`${labelClassName ? labelClassName : 'form__label'}`}>
+      <label style={labelStyles} className={`${labelClassName ? labelClassName : 'htsform__label'}`}>
         {control.label}
       </label>
     )
@@ -88,7 +87,7 @@ function Form({
         placeholder={control?.placeholder}
         value={control?.value}
         onChange={control?.onChange}
-        className={`${control.className ? control.className : 'form__control'}`}
+        className={`${control.className ? control.className : 'htsform__control'}`}
         style={control.styles}
         required={control.required || false}
       />
@@ -99,7 +98,7 @@ function Form({
         name={control.name}
         value={control?.value}
         onChange={control?.onChange}
-        className={`${control.className ? control.className : 'form__control'}`}
+        className={`${control.className ? control.className : 'htsform__control'}`}
         style={control.styles}
         required={control.required || false}
       >
@@ -117,7 +116,7 @@ function Form({
         placeholder={control?.placeholder}
         value={control?.value}
         onChange={control?.onChange}
-        className={`${control.className ? control.className : 'form__control'}`}
+        className={`${control.className ? control.className : 'htsform__control'}`}
         style={control.styles}
         required={control.required || false}
       ></textarea>
@@ -126,28 +125,28 @@ function Form({
     switch (control.type) {
       case 'text':
         return (
-          <div className={'form__control__group'} key={index}>
+          <div className={'htsform__control__group'} key={index}>
             {labelTag}
             {InputTag}
           </div>
         )
       case 'select':
         return (
-          <div className={'form__control__group'} key={index}>
+          <div className={'htsform__control__group'} key={index}>
             {labelTag}
             {SelectTag}
           </div>
         )
       case 'textarea':
         return (
-          <div className={'form__control__group'} key={index}>
+          <div className={'htsform__control__group'} key={index}>
             {labelTag}
             {TextareaTag}
           </div>
         )
       default:
         return (
-          <div className={'form__control__group'} key={index}>
+          <div className={'htsform__control__group'} key={index}>
             {labelTag}
             {InputTag}
           </div>
@@ -158,14 +157,14 @@ function Form({
     <form
       key='hts-react-form'
       onSubmit={actionControl?.onSubmit}
-      className={`${className ? className : 'form__container'}`}
+      className={`${className ? className : 'htsform__container'}`}
       style={styles}
     >
       {controls?.map((control, index) => renderControl(control, index))}
 
       {actionControl && (
-        <div className={'form__control__button'}>
-          <div className={'form__social'}>
+        <div className={'htsform__control__button'}>
+          <div className={'htsform__social'}>
             {googleLogin && (
               <button onClick={googleLogin?.onClick} type='button'>
                 {googleLogin?.label}
@@ -189,7 +188,7 @@ function Form({
       )}
 
       {forgetPassword && (
-        <button className={'form__forgot'} type='button' onClick={forgetPassword?.onClick}>
+        <button className={'htsform__forgot'} type='button' onClick={forgetPassword?.onClick}>
           {forgetPassword?.label}
         </button>
       )}

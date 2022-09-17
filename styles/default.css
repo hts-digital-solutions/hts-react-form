@@ -1,13 +1,13 @@
-.form__container {
+.htsform__container {
   margin-top: 2rem;
 }
 
-.form__control__group {
+.htsform__control__group {
   margin: 0.5rem 0;
   display: block;
 }
 
-.form__control {
+.htsform__control {
   width: 100%;
   padding: 0.8rem 0.5rem;
   border-radius: 0.5rem;
@@ -16,23 +16,23 @@
   margin-top: 0.2rem;
 }
 
-.form__label {
+.htsform__label {
   margin: 0.5rem 0;
 }
 
-.form__control__button {
+.htsform__control__button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.form__social {
+.htsform__social {
   flex: 1;
   display: flex;
   align-items: center;
 }
 
-.form__social button {
+.htsform__social button {
   border: none;
   font-size: 1.2rem;
   width: 3rem;
@@ -47,31 +47,34 @@
   margin-right: 0.5rem;
 }
 
-.form__social button:hover {
+.htsform__social button:hover {
   opacity: 0.8;
 }
 
-.form__forgot {
+.htsform__forgot {
   border: none;
   float: right;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.form__forgot:hover {
+.htsform__forgot:hover {
   color: var(--secondary-color);
   background-color: transparent;
 }
 
 @media screen and (max-width: 768px) {
-  .form__control {
+  .htsform__control {
     padding: 0.65rem 0.5rem;
   }
-  .form__social button {
+  .htsform__social button {
     width: 2.5rem;
     height: 2.5rem;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .htsform__container {
+    margin: 0 0.5rem;
+  }
 }
