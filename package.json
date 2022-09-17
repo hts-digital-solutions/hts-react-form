@@ -1,6 +1,6 @@
 {
   "name": "hts-react-form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple and easy form for your react project.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
