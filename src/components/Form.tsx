@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react'
+import React from 'react'
 
 type Control = {
   label: string | JSX.Element
