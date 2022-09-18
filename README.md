@@ -1,12 +1,3 @@
-<h1>hts-react-form</h1>
-<p>A simple and easy form for your react project.</p>
-
-<h2>Install</h2>
-<code> npm i hts-react-form </code>
-<br />
-<br />
-<code> yarn add hts-react-form </code>
-
 # hts-react-form
 A simple and easy form for your react project.
 ## Installation
@@ -86,7 +77,3 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
