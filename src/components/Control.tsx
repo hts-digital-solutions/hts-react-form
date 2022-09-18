@@ -20,6 +20,13 @@ function Control({ control, labelStyles, labelClassName, errorStyles, errorClass
       setError('')
     }
 
+    if (control.validation) {
+      const pattern = control.validation.pattern
+      if (pattern && !e.target.value?.test(pattern)) {
+        setError(control.validation.message)
+      }
+    }
+
     control.onChange(e)
   }
 
