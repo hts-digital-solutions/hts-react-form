@@ -1,124 +1,87 @@
-<h1>hts-react-form</h1>
-<p>A simple and easy form for your react project.</p>
+# hts-react-form
+A simple and easy form for your react project.
+## Installation
 
-<h2>Install</h2>
-<code> npm i hts-react-form </code>
-<br />
-<br />
-<code> yarn add hts-react-form </code>
+```sh
+npm install hts-react-form
+```
+```sh
+yarn add hts-react-form
+```
 
-<h2>
-  Usages
-  <h2>
-    <code style="font-size: 0.9rem">
-      <pre>
-        import 'hts-react-form/dist/styles/default.css' //default css 
-        import {HTSReactForm} from "hts-react-form"
+## Usage
 
-      <HTSReactForm
-      actionControl={{
-        label: "Login",
-        onSubmit: (e) => {
-            setState(e.target.value)
-        },
-      }}
+```js
+import React, { useState } from "react";
+import "hts-react-form/styles/default.css";
+import { HTSReactForm } from "hts-react-form";
+
+function HtsFormExample() {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <HTSReactForm
       controls={[
         {
-            label: 'Email',
-            type: 'text',
-            name: 'email',
-            placeholder: '',
-            value: '',
-            onChange: (e) => {
-                e.preventDefault()
-                //rest code
-            },
+          label: "Email",
+          type: "text",
+          name: "email",
+          value: email,
+          onChange: (e) => setEmail(e.target.value),
+          required: true,
         },
-        ]} />
-      </pre>
-    </code>
+        {
+          label: "Password",
+          type: "password",
+          name: "password",
+          value: password,
+          onChange: (e) => setPassword(e.target.value),
+          required: true,
+        },
+      ]}
+      actionControl={{
+        label: "Login",
+        onSubmit: loginHandler,
+        className: `${btnStyles.button} ${btnStyles.primary}`,
+      }}
+      forgetPassword={{
+        label: "Forgot Password?",
+        onClick: () => {},
+      }}
+      googleLogin={{
+        label: <i className="la la-google-plus"></i>,
+        onClick: () => {},
+      }}
+      facebookLogin={{
+        label: <i className="lab la-facebook"></i>,
+        onClick: () => {},
+      }}
+      githubLogin={{
+        label: <i className="la la-github"></i>,
+        onClick: () => {},
+      }}
+    />
+  );
+}
 
-    <table style="font-size: 1rem">
-      <thead>
-        <tr>
-          <th>Attributes Name</th>
-          <th>Attributes Value</th>
-        </tr>
-      </thead>
+export default HtsFormExample;
 
-      <tbody>
-        <tr>
-          <td>controls</td>
-          <td>
-            Array of input control object
-            <code>
-              { label: string name: string type: string placeholder: string value: any onChange: function styles?:
-              React.CSSProperties className?: string required?: boolean options?: { label: string value: string }[] }
-            </code>
-          </td>
-        </tr>
+```
 
-        <tr>
-          <td>actionControl</td>
-          <td>
-            Object of action details
-            <code> label: string onSubmit: function styles?: React.CSSProperties className?: string </code>
-          </td>
-        </tr>
+## Preview
 
-        <tr>
-          <td>forgetPassword</td>
-          <td>
-            Object of forgot password option or false
-            <code> label: string onClick: function styles?: React.CSSProperties className?: string </code>
-          </td>
-        </tr>
+![image](https://user-images.githubusercontent.com/108685449/190889797-96301ffb-6d8e-4bba-8ec8-d92be9876618.png)
 
-        <tr>
-          <td>googleLogin</td>
-          <td>
-            Object of google button or false
-            <code> label: string onClick: any styles: React.CSSProperties className: string </code>
-          </td>
-        </tr>
 
-        <tr>
-          <td>githubLogin</td>
-          <td>
-            Object of github button or false
-            <code> label: string onClick: function styles?: React.CSSProperties className?: string </code>
-          </td>
-        </tr>
+## Contributing
 
-        <tr>
-          <td>facebookLogin</td>
-          <td>
-            Object of facebook button or false
-            <code> label: string onClick: function styles?: React.CSSProperties className?: string </code>
-          </td>
-        </tr>
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
-        <tr>
-          <td>labelClassName</td>
-          <td>Custom classes for label</td>
-        </tr>
+## License
 
-        <tr>
-          <td>labelStyles</td>
-          <td>Use react styles properties instead to override styles</td>
-        </tr>
-
-        <tr>
-          <td>styles</td>
-          <td>Use react styles properties instead to override form container styles</td>
-        </tr>
-
-        <tr>
-          <td>className</td>
-          <td>Custom classes for form container</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </h2>
-</h2>
+MIT
