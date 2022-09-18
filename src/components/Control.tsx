@@ -22,8 +22,10 @@ function Control({ control, labelStyles, labelClassName, errorStyles, errorClass
 
     if (control.validation) {
       const pattern = control.validation.pattern
-      if (pattern && !e.target.value?.test(pattern)) {
+      if (pattern && !pattern?.test(e.target.value)) {
         setError(control.validation.message)
+      } else {
+        setError('')
       }
     }
 

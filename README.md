@@ -102,7 +102,7 @@ Array of input control each contains these properties
   "styles" :"React.CSSProperties (optional)"
   "className" :"string (optional)"
   "required" :"boolean (optional) default false"
-  "validation" :{ "pattern" : "string", "message": "string" } "(optional)"
+  "validation" :{ "pattern" : "RegExp", "message": "string" } "(optional)"
   "options": {
     "label": "string"
     "value": "string"

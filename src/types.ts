@@ -1,5 +1,5 @@
 export type Validation = {
-  pattern: string,
+  pattern: RegExp
   message: string
 }
 
