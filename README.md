@@ -5,6 +5,9 @@ A simple and easy form for your react project.
 ```sh
 npm install hts-react-form
 ```
+```sh
+yarn add hts-react-form
+```
 
 ## Usage
 
@@ -69,6 +72,11 @@ function HtsFormExample() {
 export default HtsFormExample;
 
 ```
+
+## Preview
+
+![image](https://user-images.githubusercontent.com/108685449/190889797-96301ffb-6d8e-4bba-8ec8-d92be9876618.png)
+
 
 ## Contributing
 
